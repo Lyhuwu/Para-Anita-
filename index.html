@@ -112,38 +112,39 @@
     <iframe src="https://kinopio.club/embed/?spaceId=VpD_KKGvC0l9ILCYEJyvX&zoom=92"></iframe>
   </div>
 
-  <audio id="musica" src="audio/cancion.mp3" loop></audio>
+ <audio id="musica" src="audio/cancion.mp3" loop></audio>
 
-  <button id="botonMusica" class="boton-musica" onclick="toggleMusica()">🎵 Reproducir música</button>
+<button id="botonMusica" class="boton-musica" onclick="toggleMusica()">🎵 Reproducir música</button>
 
-  <script>
-    // Corazones flotantes
-    const emojis = ['💜', '💙'];
-    for (let i = 0; i < 30; i++) {
-      const emoji = document.createElement('div');
-      emoji.classList.add('emoji');
-      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      emoji.style.left = Math.random() * 100 + 'vw';
-      emoji.style.top = Math.random() * 100 + 'vh';
-      emoji.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
-      document.body.appendChild(emoji);
-      setTimeout(() => emoji.remove(), 10000);
+<script>
+  // Corazones flotantes (esto está bien, no afecta la música)
+  const emojis = ['💜', '💙'];
+  for (let i = 0; i < 30; i++) {
+    const emoji = document.createElement('div');
+    emoji.classList.add('emoji');
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = Math.random() * 100 + 'vw';
+    emoji.style.top = Math.random() * 100 + 'vh';
+    emoji.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+    document.body.appendChild(emoji);
+    setTimeout(() => emoji.remove(), 10000);
+  }
+
+  // Música + efecto en botón
+  const musica = document.getElementById('musica');
+  const boton = document.getElementById('botonMusica');
+
+  function toggleMusica() {
+    if (musica.paused) {
+      musica.play();
+      boton.innerText = '🔇 Pausar música';
+    } else {
+      musica.pause();
+      boton.innerText = '🎵 Reproducir música';
     }
+  }
+</script>
 
-    // Música + efecto en botón
-    const musica = document.getElementById('musica');
-    const boton = document.getElementById('botonMusica');
-
-    function toggleMusica() {
-      if (musica.paused) {
-        musica.play();
-        boton.innerText = '🔇 Pausar música';
-      } else {
-        musica.pause();
-        boton.innerText = '🎵 Reproducir música';
-      }
-    }
-  </script>
 
 </body>
 </html>
