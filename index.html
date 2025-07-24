@@ -11,7 +11,7 @@
       height: 100%;
       background: linear-gradient(to right, #fdfbfb, #ebedee);
       font-family: sans-serif;
-      overflow-x: hidden; /* evita scroll horizontal */
+      overflow-x: hidden; /* evita scroll lateral */
     }
     .mensaje {
       position: absolute;
@@ -45,14 +45,13 @@
     }
     .kinopio-embed {
       width: 100%;
-      height: 100vh; /* altura viewport completa */
-      /* overflow: hidden;  comentado para permitir gestos táctiles */
+      height: 100vh; /* ocupa toda la altura visible */
     }
     iframe {
       width: 100%;
       height: 100%;
       border: none;
-      touch-action: manipulation;
+      touch-action: manipulation; /* permite gestos táctiles */
     }
   </style>
 </head>
@@ -61,8 +60,8 @@
     Para mi amorcito, mi reina, mi diosa, la dueña de mis quincenas 💖
   </div>
   <div class="kinopio-embed">
-    <iframe src="https://kinopio.club/embed/?spaceId=VpD_KKGvC0l9ILCYEJyvX&zoom=80"></iframe>
+    <!-- Aquí quitamos el zoom fijo para que se ajuste solo -->
+    <iframe src="https://kinopio.club/embed/?spaceId=VpD_KKGvC0l9ILCYEJyvX"></iframe>
   </div>
 </body>
 </html>
-
