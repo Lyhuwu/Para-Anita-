@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Para mi amorcito, mi reina, mi diosa, la dueña de mis quincenas 💘</title>
   <style>
     html, body {
@@ -11,8 +11,8 @@
       height: 100%;
       background: linear-gradient(to right, #fdfbfb, #ebedee);
       font-family: sans-serif;
+      overflow-x: hidden; /* evita scroll horizontal */
     }
-
     .mensaje {
       position: absolute;
       top: 50%;
@@ -29,14 +29,12 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       animation: fadeOut 1s ease-in-out 5s forwards, fadeIn 1s ease-out;
     }
-
     @keyframes fadeOut {
       to {
         opacity: 0;
         visibility: hidden;
       }
     }
-
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -45,30 +43,26 @@
         opacity: 1;
       }
     }
-
     .kinopio-embed {
       width: 100%;
-      height: 100%;
-      /* overflow: hidden;  <-- comentado para permitir gestos táctiles */
+      height: 100vh; /* altura viewport completa */
+      /* overflow: hidden;  comentado para permitir gestos táctiles */
     }
-
     iframe {
       width: 100%;
       height: 100%;
       border: none;
-      touch-action: manipulation; /* mejora interacción táctil */
+      touch-action: manipulation;
     }
   </style>
 </head>
 <body>
-
   <div class="mensaje">
     Para mi amorcito, mi reina, mi diosa, la dueña de mis quincenas 💖
   </div>
-
   <div class="kinopio-embed">
-    <iframe src="https://kinopio.club/embed/?spaceId=VpD_KKGvC0l9ILCYEJyvX&zoom=100"></iframe>
+    <iframe src="https://kinopio.club/embed/?spaceId=VpD_KKGvC0l9ILCYEJyvX&zoom=80"></iframe>
   </div>
-
 </body>
 </html>
+
