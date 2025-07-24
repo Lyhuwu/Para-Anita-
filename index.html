@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Para mi arrocito</title>
   <style>
     html, body {
@@ -24,69 +24,30 @@
       height: 100%;
       width: 100%;
       border: none;
-      border-radius: 0;
     }
 
     .mensaje-amor {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%) scale(0.9);
-  background: linear-gradient(135deg, #ffe6f0, #fff);
-  color: #000;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  font-size: 2.3em;
-  padding: 30px 40px;
-  border: 4px solid #ff69b4;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-  z-index: 999;
-  animation: fadeOut 2s ease-out 5s forwards; /* Desaparece después de 5 segundos */
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-    }
-
-    .mensaje-amor::before,
-    .mensaje-amor::after {
-      content: "💖";
-      margin: 0 10px;
-    }
-
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-        transform: translateX(-50%) scale(0.6);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(-50%) scale(1);
-      }
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      background: linear-gradient(135deg, #ffe6f0, #fff);
+      color: #000;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-size: 2.3em;
+      padding: 30px 40px;
+      border: 4px solid #ff69b4;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+      z-index: 999;
+      animation: fadeOut 2s ease-out 5s forwards;
     }
 
     @keyframes fadeOut {
-      0%   { opacity: 1; }
-      90%  { opacity: 1; }
-      100% { opacity: 0; display: none; }
-    }
-
-    .emoji {
-      position: fixed;
-      font-size: 2rem;
-      pointer-events: none;
-      animation: floatUp 10s linear forwards, fadeOut 10s forwards;
-      z-index: 998;
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(100vh); opacity: 1; }
-      to   { transform: translateY(-20vh); opacity: 0; }
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
 
     .boton-musica {
@@ -109,6 +70,19 @@
       background-color: #ffe6f0;
       color: #d61b78;
     }
+
+    .emoji {
+      position: fixed;
+      font-size: 2rem;
+      pointer-events: none;
+      animation: floatUp 10s linear forwards, fadeOut 10s forwards;
+      z-index: 998;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh); opacity: 1; }
+      to   { transform: translateY(-20vh); opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -121,39 +95,42 @@
     <iframe src="https://kinopio.club/embed/?spaceId=VpD_KKGvC0l9ILCYEJyvX&zoom=92"></iframe>
   </div>
 
- <audio id="musica" src="https://raw.githubusercontent.com/Lyhuwu/Para-Anita-/main/audio/cancion.mp3" loop></audio>
+  <!-- ✅ AUDIO CON RUTA CORRECTA -->
+  <audio id="musica" src="https://lyhuwu.github.io/Para-Anita-/audio/cancion.mp3" loop></audio>
 
-<button id="botonMusica" class="boton-musica" onclick="toggleMusica()">🎵 Reproducir música</button>
+  <button id="botonMusica" class="boton-musica">🎵 Reproducir música</button>
 
-<script>
-  // Corazones flotantes (esto está bien, no afecta la música)
-  const emojis = ['💜', '💙'];
-  for (let i = 0; i < 30; i++) {
-    const emoji = document.createElement('div');
-    emoji.classList.add('emoji');
-    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    emoji.style.left = Math.random() * 100 + 'vw';
-    emoji.style.top = Math.random() * 100 + 'vh';
-    emoji.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
-    document.body.appendChild(emoji);
-    setTimeout(() => emoji.remove(), 10000);
-  }
+  <script>
+    const musica = document.getElementById("musica");
+    const boton = document.getElementById("botonMusica");
 
-  // Música + efecto en botón
-  const musica = document.getElementById('musica');
-  const boton = document.getElementById('botonMusica');
+    boton.addEventListener("click", async () => {
+      try {
+        if (musica.paused) {
+          await musica.play();
+          boton.innerText = "🔇 Pausar música";
+        } else {
+          musica.pause();
+          boton.innerText = "🎵 Reproducir música";
+        }
+      } catch (error) {
+        alert("No se pudo reproducir la música: " + error.message);
+      }
+    });
 
-  function toggleMusica() {
-    if (musica.paused) {
-      musica.play();
-      boton.innerText = '🔇 Pausar música';
-    } else {
-      musica.pause();
-      boton.innerText = '🎵 Reproducir música';
+    // Corazones flotantes
+    const emojis = ['💜', '💙'];
+    for (let i = 0; i < 30; i++) {
+      const emoji = document.createElement('div');
+      emoji.classList.add('emoji');
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.top = Math.random() * 100 + 'vh';
+      emoji.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+      document.body.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 10000);
     }
-  }
-</script>
-
+  </script>
 
 </body>
 </html>
